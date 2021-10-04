@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Firebase Creds
+curs-flutter-firebase-adminsdk-hshxr-027843bf57.json
