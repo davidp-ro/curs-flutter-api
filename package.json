@@ -1,0 +1,23 @@
+{
+  "name": "curs-flutter-api",
+  "version": "1.0.0",
+  "description": "REST API for a Flutter course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidp-ro/curs-flutter-api.git"
+  },
+  "author": "David Pescariu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidp-ro/curs-flutter-api/issues"
+  },
+  "homepage": "https://github.com/davidp-ro/curs-flutter-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
