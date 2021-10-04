@@ -84,7 +84,34 @@ module.exports = class Handlers {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  static getSneakerWithID(req, res) {}
+  static getSneakerWithID(req, res) {
+    initFirebase();
+
+    if (!req.params.id) {
+      res.status(500).json(errResponse("Missing ID"));
+      return;
+    }
+
+    const db = admin.firestore().collection("sneakers");
+    db.doc(req.params.id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          res.status(200).json(
+            okResponse({
+              id: doc.id,
+              ...doc.data(),
+            })
+          );
+        } else {
+          res.status(500).json(errResponse('Invalid ID'));
+        }
+      })
+      .catch((reason) => {
+        res.status(500).json(errResponse(reason));
+        return;
+      });
+  }
 
   /**
    * @param {import('express').Request} req

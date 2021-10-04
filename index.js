@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
 
 app.get("/sneakers", (req, res) => handlers.getAllSneakers(req, res));
 
+app.get("/sneaker", (req, res) => handlers.getSneakerWithID(req, res));
 app.get("/sneaker/:id", (req, res) => handlers.getSneakerWithID(req, res));
 
 app.post("/sneaker", (req, res) => handlers.addSneaker(req, res));
