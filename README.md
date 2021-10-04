@@ -1,10 +1,10 @@
 # curs-flutter-api
 
-REST API used to teach a Flutter course
+REST API used to teach a Flutter course, deployed on heroku [here](https://curs-flutter.herokuapp.com).
 
 # Endpoints
 
-- `GET /sneakers`: Get a list of sneakers:
+- `GET /sneakers` &times; https://curs-flutter.herokuapp.com/sneakers &times; Get a list of sneakers:
 
 ```json
 {
@@ -24,7 +24,7 @@ REST API used to teach a Flutter course
 }
 ```
 
-- `GET /sneaker/[id]`: Get a sneaker by it's ID
+- `GET /sneaker/[id]` &times; https://curs-flutter.herokuapp.com/sneaker/[id] &times; Get a sneaker by it's ID
 
 ```json
 {
@@ -40,13 +40,23 @@ REST API used to teach a Flutter course
 }
 ```
 
-- `POST /sneaker`: Add a sneaker (if enabled in .env)
+- `POST /sneaker` &times; https://curs-flutter.herokuapp.com/sneaker &times; Add a sneaker (if enabled in .env)
 
 ```json
+Request Body:
+
 {
   "brand": "Sneaker Brand, ie: adidas (all lowercase, no spaces)",
   "name": "The sneaker's model / display name",
   "price": "The sneaker's price"
+}
+
+Response:
+
+{
+  "status": "ok / fail",
+  "error": "null / an error",
+  "data": "The newly added sneaker's ID"
 }
 ```
 
