@@ -24,7 +24,8 @@ const limiter = rateLimit({
 
 // Middlewares:
 app.use(limiter);
-app.use(morgan('short'))
+app.use(morgan('short'));
+app.use(express.json());
 
 // Endpoints:
 app.get("/", (req, res) => {
@@ -37,6 +38,8 @@ app.get("/", (req, res) => {
 app.get("/sneakers", (req, res) => handlers.getAllSneakers(req, res));
 
 app.get("/sneaker/:id", (req, res) => handlers.getSneakerWithID(req, res));
+
+app.post("/sneaker", (req, res) => handlers.addSneaker(req, res));
 
 // Start:
 app.listen(PORT, () => {
