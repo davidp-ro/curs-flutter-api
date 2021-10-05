@@ -32,6 +32,9 @@ function okResponse(data) {
   };
 }
 
+/**
+ * Initialize firebase (firstly checks if it's not already initialized)
+ */
 function initFirebase() {
   if (admin.apps.length == 0) {
     admin.initializeApp({
@@ -42,6 +45,18 @@ function initFirebase() {
       ),
     });
   }
+}
+
+/**
+ * Get a FieldPath query ready to use in a select
+ * 
+ * Shorthand for `new admin.firestore.FieldPath(s)`
+ *
+ * @param {string} s Firebase field
+ * @returns {admin.firestore.FieldPath} generated query
+ */
+function getQuery(s) {
+  return new admin.firestore.FieldPath(s);
 }
 
 /**
@@ -64,7 +79,14 @@ module.exports = class Handlers {
 
     let sneakers = [];
     const db = admin.firestore().collection("sneakers");
-    db.get()
+
+    db.select(
+      getQuery("brand"),
+      getQuery("name"),
+      getQuery("price"),
+      getQuery("image")
+    )
+      .get()
       .then((doc) => {
         doc.docs.map((doc) => {
           sneakers.push({
@@ -104,7 +126,7 @@ module.exports = class Handlers {
             })
           );
         } else {
-          res.status(500).json(errResponse('Invalid ID'));
+          res.status(500).json(errResponse("Invalid ID"));
         }
       })
       .catch((reason) => {
@@ -131,6 +153,8 @@ module.exports = class Handlers {
       brand: req.body.brand,
       price: req.body.price,
       image: getImageLink(req.body.brand, req.body.name),
+      desc: req.body.desc,
+      url: req.body.url,
     })
       .then((doc) => {
         res.status(200).json(okResponse(doc.id));

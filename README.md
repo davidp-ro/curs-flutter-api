@@ -24,7 +24,7 @@ REST API used to teach a Flutter course, deployed on heroku [here](https://curs-
 }
 ```
 
-- `GET /sneaker/[id]` &times; https://curs-flutter.herokuapp.com/sneaker/[id] &times; Get a sneaker by it's ID
+- `GET /sneaker/[id]` &times; https://curs-flutter.herokuapp.com/sneaker/[id] &times; Get more info of a sneaker (by it's ID)
 
 ```json
 {
@@ -35,7 +35,9 @@ REST API used to teach a Flutter course, deployed on heroku [here](https://curs-
     "brand": "Sneaker Brand, ie: adidas (all lowercase, no spaces)",
     "name": "The sneaker's model / display name",
     "price": "The sneaker's price",
-    "image": "image_link"
+    "image": "image_link",
+    "desc": "Brand's description for this sneaker",
+    "url": "Official page link"
   }
 }
 ```
@@ -48,7 +50,9 @@ Request Body:
 {
   "brand": "Sneaker Brand, ie: adidas (all lowercase, no spaces)",
   "name": "The sneaker's model / display name",
-  "price": "The sneaker's price"
+  "price": "The sneaker's price",
+  "desc": "Brand's description for this sneaker",
+  "url": "Official page link"
 }
 
 Response:
